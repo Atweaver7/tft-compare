@@ -1,0 +1,52 @@
+* {
+  margin: 0%;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  /* border: solid 1px red; */
+}
+
+.body {
+  background-color: #292828;
+}
+
+span h1 {
+    margin-top: 40px;
+    
+}
+.header {
+border: #141414;
+  text-align: center;
+  font-size: xx-large;
+  color: azure;
+  
+}
+
+.vs {
+ text-align: center;
+  font-size: 105px;
+  color: azure;
+}
+
+/* Search bar styling */
+
+.search-left-container {
+  margin-top: 200px;
+  text-align: center;
+  padding: 15px 15px 15px 15px;
+}
+
+.search-right-container {
+  margin-top: 200px;
+  text-align: center;
+  padding: 15px 15px 15px 15px;
+}
+
+.display-box-1 {
+    color: aliceblue;
+    border: white 2px solid;
+    text-align: center;
+}
+.display-box-2 {
+    color: aliceblue;
+    border: white 2px solid;
+    text-align: center;
+}
