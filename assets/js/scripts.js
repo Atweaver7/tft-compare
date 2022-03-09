@@ -38,6 +38,7 @@ function secondFetch(id) {
 =======
 let leftSearch = document.getElementsByClassName(".search-left-container");
 let rightSearch = document.getElementsByClassName(".search-right-container");
+let boxLeft = 
 const nameLeft = document.getElementById("#sumName")
 let summonerAccountID1 = [];
 let summonerID1 = [];
@@ -84,7 +85,7 @@ function getWins(apileftData) {
 function buildLeft() {
   console.log(leftName[0])
   document.getElementById(sumName).innerHTML = leftName[0]
-  // nameLeft.innerHTML = "fuck you";
+  nameLeft.innerHTML = "fuck you";
 };
 
 
