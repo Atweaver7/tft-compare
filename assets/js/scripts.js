@@ -1,14 +1,21 @@
 let leftSearch = document.getElementsByClassName(".search-left-container");
 let rightSearch = document.getElementsByClassName(".search-right-container");
-let boxLeft = 
 const nameLeft = document.getElementById("#sumName")
-let summonerAccountID1 = [];
+const rightBox = document.getElementById("right-display-box");
+var leftBox = document.getElementById("left-display-box");
 let summonerID1 = [];
-let summonerAccountID2 = [];
+let leftSummonerData = [];
 let summonerID2 = [];
-let puuid1 = [];
-let leftName = [];
 
+let summoner1 = {
+  Name: '',
+  Picture: '',
+  Wins: '',
+  Losses: '',
+  Percent: '', 
+  Tier:'',
+  Rank: '',
+};
 
 // Api request left box begin
 function getAPILeft() {
@@ -17,11 +24,9 @@ function getAPILeft() {
     if (response.ok) {
       response.json().then(function (apileftData) {
         summonerID1.push(apileftData.id);
-        summonerAccountID1.push(apileftData.accountId)
-        puuid1.push(apileftData.puuid)
         localStorage.setItem("ID", summonerID1);
         getWins();
-      //  console.log(apileftData)
+       console.log(apileftData)
       //  console.log(puuid1)
       });
     }
@@ -33,20 +38,62 @@ function getWins(apileftData) {
   fetch(requestURL).then(function (response) {
     if (response.ok) {
       response.json().then(function (winData) {
-        leftName.push(winData[0].summonerName)
-        console.log(leftName[0]);
-        buildLeft();
+        leftSummonerData.push(winData)
+        console.log(leftSummonerData);
+        summonerLeft(leftSummonerData);
       });
     }
   });
 }
 // Api request left box end
 
-// function to populate left player box
-function buildLeft() {
-  console.log(leftName[0])
-  document.getElementById(sumName).innerHTML = leftName[0]
-  nameLeft.innerHTML = "fuck you";
+// function to populate Summoner Left object
+function summonerLeft(leftSummonerData){
+  summoner1.Name = leftSummonerData[0][0].summonerName
+  summoner1.Wins = leftSummonerData[0][0].wins
+  summoner1.Losses = leftSummonerData[0][0].losses
+  summoner1.Rank = leftSummonerData[0][0].rank
+  summoner1.Tier = leftSummonerData[0][0].tier
+  buildSummonerLeft(summoner1);
+  console.log(summoner1);
+};
+
+// function to dynamically update HTML within boxes
+function buildSummonerLeft(summoner1) {
+let header = document.createElement('h3');
+let div = document.createElement('div')
+let par = document.createElement('p')
+let wins = document.createElement('p')
+let losses = document.createElement('p')
+let rank = document.createElement('p')
+let tier = document.createElement('p')
+
+// // assign classes to dynamically created HTML
+// header.setAttribute('');
+// div.setAttribute('');
+// par.setAttribute('');
+
+// creating HTML and populating with object data
+header.innerHTML = summoner1.Name
+wins.innerHTML = "Wins: " + summoner1.Wins
+losses.innerHTML = "Losses: " + summoner1.Losses
+rank.innerHTML = "Rank: " + summoner1.Rank
+tier.innerHTML = "Tier: " + summoner1.Tier
+
+// append generated HTML to HTML container that exists as an HTML ID
+// the 'p' tags are being generated under the 'div'
+div.append(wins, losses, rank, tier)
+
+
+
+// send the above to left box
+leftBox.append(header, div)
+};
+
+function leftSearchButton(event){
+event.preventDefault();
+let targetEl = event.target
+if (targetEl.matches("."))
 };
 
 
@@ -56,4 +103,4 @@ function buildLeft() {
 
 getAPILeft();
 
-// document.addEventListener('click',)
+document.addEventListener('click', leftSearchButton)
