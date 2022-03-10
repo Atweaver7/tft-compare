@@ -1,5 +1,5 @@
-let leftSearch = document.getElementsByClassName(".search-left-container");
-let rightSearch = document.getElementsByClassName(".search-right-container");
+var leftSearch = document.querySelector(".input-left");
+var rightSearch = document.querySelector(".input-right");
 const nameLeft = document.getElementById("#sumName")
 const rightBox = document.getElementById("right-display-box");
 var leftBox = document.getElementById("left-display-box");
@@ -18,15 +18,15 @@ let summoner1 = {
 };
 
 // Api request left box begin
-function getAPILeft() {
-  let requestURL = `https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/BCISTHEBEST?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
+function getAPILeft(leftName) {
+  let requestURL = `https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/${leftName}?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
   fetch(requestURL).then(function (response) {
     if (response.ok) {
       response.json().then(function (apileftData) {
         summonerID1.push(apileftData.id);
         localStorage.setItem("ID", summonerID1);
         getWins();
-       console.log(apileftData)
+      //  console.log(apileftData)
       //  console.log(puuid1)
       });
     }
@@ -49,13 +49,13 @@ function getWins(apileftData) {
 
 // function to populate Summoner Left object
 function summonerLeft(leftSummonerData){
-  summoner1.Name = leftSummonerData[0][0].summonerName
+  summoner1.Name = leftSummonerData[0][0].summonerName.toUpperCase()
   summoner1.Wins = leftSummonerData[0][0].wins
   summoner1.Losses = leftSummonerData[0][0].losses
   summoner1.Rank = leftSummonerData[0][0].rank
   summoner1.Tier = leftSummonerData[0][0].tier
   buildSummonerLeft(summoner1);
-  console.log(summoner1);
+  // console.log(summoner1);
 };
 
 // function to dynamically update HTML within boxes
@@ -91,9 +91,13 @@ leftBox.append(header, div)
 };
 
 function leftSearchButton(event){
-event.preventDefault();
+// event.preventDefault();
 let targetEl = event.target
-if (targetEl.matches("."))
+if (targetEl.matches(".btn")) {
+let leftName = leftSearch.value
+console.log(leftSearch.value)
+  getAPILeft(leftName);
+}
 };
 
 
@@ -101,6 +105,6 @@ if (targetEl.matches("."))
 
 
 
-getAPILeft();
+
 
 document.addEventListener('click', leftSearchButton)
