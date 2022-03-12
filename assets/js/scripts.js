@@ -10,6 +10,7 @@ function getAPI(summonerName) {
       response.json().then(function (apiData) {
         var summoner = {
           Name: '',
+          IconId: '',
           Id: '',
           Picture: '',
           Wins: '',
@@ -18,6 +19,7 @@ function getAPI(summonerName) {
           Tier:'',
           Rank: '',
         };
+        summoner.IconId = apiData.profileIconId;
         summoner.Id = apiData.id;
         getWins(summoner);
       });
@@ -26,7 +28,7 @@ function getAPI(summonerName) {
 }
 
 function getWins(summoner) {
-    let requestURL = `https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summoner.Id}?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
+  let requestURL = `https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summoner.Id}?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
   fetch(requestURL).then(function (response) {
     if (response.ok) {
       response.json().then(function (winData) {
@@ -51,6 +53,11 @@ function buildSummoner(summoner) {
   let rank = document.createElement('p');
   let tier = document.createElement('p');
 
+  let iconURL = `http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/${summoner.IconId}.png`;
+  let icon = document.createElement('img');
+  icon.setAttribute('src', iconURL);
+  icon.setAttribute('alt', 'Profile Icon');
+
   // creating HTML and populating with object data
   header.innerHTML = summoner.Name
   wins.innerHTML = "Wins: " + summoner.Wins
@@ -60,10 +67,10 @@ function buildSummoner(summoner) {
 
   // append generated HTML to HTML container that exists as an HTML ID
   // the 'p' tags are being generated under the 'div'
-  div.append(wins, losses, rank, tier)
+  div.append(wins, losses, rank, tier);
 
   // send the above to display box
-  displayBox.append(header, div);
+  displayBox.append(header, icon, div);
   displayResults.append(displayBox);
 };
 
