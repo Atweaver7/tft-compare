@@ -47,7 +47,7 @@ border: #141414;
     color: aliceblue;
     border: white 2px solid;
     text-align: center; */
-}
+
 .display-box-2 {
     color: aliceblue;
     border: white 2px solid;
@@ -121,6 +121,10 @@ input:focus {
 .firstLine {
   font-size: 30px;
   color: white
+}
+
+.row {
+  justify-content: space-around;
 }
 
 @media only screen and (max-width: 600px) {

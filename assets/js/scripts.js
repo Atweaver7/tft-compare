@@ -1,114 +1,81 @@
-var leftInputEl = document.querySelector('input[name="search-left"]');
-
 var leftSearch = document.querySelector(".input-left");
 var rightSearch = document.querySelector(".input-right");
-const nameLeft = document.getElementById("#sumName")
-const rightBox = document.getElementById("right-display-box");
-var leftBox = document.getElementById("left-display-box");
-let summonerID1 = [];
-let leftSummonerData = [];
-let summonerID2 = [];
+var displayResults = document.querySelector('.row');
 
-let summoner1 = {
-  Name: '',
-  Picture: '',
-  Wins: '',
-  Losses: '',
-  Percent: '', 
-  Tier:'',
-  Rank: '',
-};
-
-// Api request left box begin
-function getAPILeft(leftName) {
-  let requestURL = `https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/${leftName}?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
+// Api request
+function getAPI(summonerName) {
+  let requestURL = `https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/${summonerName}?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
   fetch(requestURL).then(function (response) {
     if (response.ok) {
-      response.json().then(function (apileftData) {
-        summonerID1.push(apileftData.id);
-        localStorage.setItem("ID", summonerID1);
-        getWins();
-      //  console.log(apileftData)
-      //  console.log(puuid1)
+      response.json().then(function (apiData) {
+        var summoner = {
+          Name: '',
+          Id: '',
+          Picture: '',
+          Wins: '',
+          Losses: '',
+          Percent: '', 
+          Tier:'',
+          Rank: '',
+        };
+        summoner.Id = apiData.id;
+        getWins(summoner);
       });
     }
   });
 }
 
-function getWins(apileftData) {
-    let requestURL = `https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summonerID1}?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
+function getWins(summoner) {
+    let requestURL = `https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summoner.Id}?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
   fetch(requestURL).then(function (response) {
     if (response.ok) {
       response.json().then(function (winData) {
-        leftSummonerData.push(winData)
-        console.log(leftSummonerData);
-        summonerLeft(leftSummonerData);
+        summoner.Name = winData[0].summonerName.toUpperCase();
+        summoner.Wins = winData[0].wins;
+        summoner.Losses = winData[0].losses;
+        summoner.Rank = winData[0].rank;
+        summoner.Tier = winData[0].tier;
+        buildSummoner(summoner);
       });
     }
   });
 }
-// Api request left box end
-
-// function to populate Summoner Left object
-function summonerLeft(leftSummonerData){
-  summoner1.Name = leftSummonerData[0][0].summonerName.toUpperCase()
-  summoner1.Wins = leftSummonerData[0][0].wins
-  summoner1.Losses = leftSummonerData[0][0].losses
-  summoner1.Rank = leftSummonerData[0][0].rank
-  summoner1.Tier = leftSummonerData[0][0].tier
-  buildSummonerLeft(summoner1);
-  // console.log(summoner1);
-};
 
 // function to dynamically update HTML within boxes
-function buildSummonerLeft(summoner1) {
-let header = document.createElement('h3');
-let div = document.createElement('div')
-let par = document.createElement('p')
-let wins = document.createElement('p')
-let losses = document.createElement('p')
-let rank = document.createElement('p')
-let tier = document.createElement('p')
+function buildSummoner(summoner) {
+  let displayBox = document.createElement('div');
+  let header = document.createElement('h3');
+  let div = document.createElement('div');
+  let wins = document.createElement('p');
+  let losses = document.createElement('p');
+  let rank = document.createElement('p');
+  let tier = document.createElement('p');
 
-// // assign classes to dynamically created HTML
-// header.setAttribute('');
-// div.setAttribute('');
-// par.setAttribute('');
+  // creating HTML and populating with object data
+  header.innerHTML = summoner.Name
+  wins.innerHTML = "Wins: " + summoner.Wins
+  losses.innerHTML = "Losses: " + summoner.Losses
+  rank.innerHTML = "Rank: " + summoner.Rank
+  tier.innerHTML = "Tier: " + summoner.Tier
 
-// creating HTML and populating with object data
-header.innerHTML = summoner1.Name
-wins.innerHTML = "Wins: " + summoner1.Wins
-losses.innerHTML = "Losses: " + summoner1.Losses
-rank.innerHTML = "Rank: " + summoner1.Rank
-tier.innerHTML = "Tier: " + summoner1.Tier
+  // append generated HTML to HTML container that exists as an HTML ID
+  // the 'p' tags are being generated under the 'div'
+  div.append(wins, losses, rank, tier)
 
-// append generated HTML to HTML container that exists as an HTML ID
-// the 'p' tags are being generated under the 'div'
-div.append(wins, losses, rank, tier)
-
-
-
-// send the above to left box
-leftBox.append(header, div)
+  // send the above to display box
+  displayBox.append(header, div);
+  displayResults.append(displayBox);
 };
 
-function leftSearchButton(event){
-// event.preventDefault();
-let targetEl = event.target
-if (targetEl.matches(".btn")) {
-let leftName = leftSearch.value
-console.log(leftSearch.value)
-  getAPILeft(leftName);
-}
+function searchButton(event) {
+  event.preventDefault();
+  let targetEl = event.target;
+  if (targetEl.matches(".btn")) {
+    let leftName = leftSearch.value;
+    let rightName = rightSearch.value;
+    getAPI(leftName);
+    getAPI(rightName);
+  }
 };
 
-function printStats(event) {
-    event.preventDefault();
-    targetEl = event.target;
-    if (targetEl.matches(".search-left")) {
-        var summonerName = leftInputEl.value;
-        getAPILeft(summonerName);
-    }
-};
-
-document.addEventListener('click', leftSearchButton)
+document.addEventListener('click', searchButton);
