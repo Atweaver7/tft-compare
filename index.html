@@ -21,13 +21,29 @@
     </span>
 
     <!-- Center VS area styling -->
-    <div>
+    <div class="search-form">
+        <div class="bg text-center">
+            <!--Div for Centered Text & Input-->
+            <div class="centered">
+                <p class="firstLine"></p>
+                <!-- <p class="secondLine">Enter Names</p> -->
+                <p> <input class=" input-left InputStyle" placeholder="Summoner ID" style="font-family:Arial, FontAwesome" type="text"> </p>
+                <div class="vs"> VS </div>
+                <p> <input class=" input-right InputStyle" placeholder="Summoner ID" style="font-family:Arial, FontAwesome" type="text"> </p>
+                <button type="submit" class="btn btn-primary rounded">Let's Go</button>
+            </div>
+            <!--Div for bottom Icons-->
+            <div class="social-btn"> <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a> <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+            </div>
+        </div>
+
+
         <!-- Search Box start -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="search-left-container col-6">
-                <form>
-                    <input type="text" name="search-left" placeholder="Enter Summoner's Name" spellcheck="false">
-                    <button type="click" class="search-left">Go</button>
+                <form id="form-left">
+                <input type="text" placeholder="Enter Summoner's Name" spellcheck="false">
+                <button type="submit">Search</button>
                 </form>
             </div>
             <div class="search-right-container col-6">
@@ -36,24 +52,17 @@
                     <button type="click" class="search-right">Go</button>
                 </form>
             </div>
-        </div>
+        </div> -->
         <!-- search box end -->
         <div class="row">
-            <div class="display-box-1 col">
-                <ol>
-                    <li id="sumName"></li>
-                    <li id="">Summoner Picture</li>
-                    <li id="winsLeft">Wins</li>
-                    <li id="lossesLeft">Losses</li>
-                    <li id="winPercentLeft">Win Percentage</li>
-                </ol>
+            <div id="left-display-box" class="left-display-box col">
+               
             </div>
 
-            <div class="vs col"> VS </div>
+            
 
-            <div id="left-display-box" class="display-box-2 col">
-                          
-            </div>
+            <div id="right-display-box" class="display-box-2 col">
+           
         </div>
 
         <div></div>
