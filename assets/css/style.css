@@ -13,11 +13,12 @@ span h1 {
     
 }
 .header {
+  display: flex;
 border: #141414;
   text-align: center;
   font-size: xx-large;
   color: azure;
-  margin-bottom: 15%;
+  margin-bottom: 1%;
   
 }
 
@@ -59,7 +60,7 @@ border: #141414;
   width: 100%;
   height: auto;
   min-height: 100vh;
-  background-image: url(http://i.imgur.com/w16HASj.png);
+ 
   background-size: 100% 100%;
   background-position: top center
 }
@@ -70,7 +71,7 @@ border: #141414;
 
 .centered {
   position: absolute;
-  top: 40%;
+  top: 100%;
   left: 50%;
   transform: translate(-50%, -50%)
 }
@@ -135,3 +136,23 @@ input:focus {
   }
 }
 
+
+/* Hero Styling start */
+
+.hero {
+  /* background-image: url(../pictures/wp7413225-tft-wallpapers\ \(1\).jpg); */
+  height: 400px;
+  
+  width: 100%;
+  display: flex;
+  min-height: 10;
+}
+
+.hero-picture {
+  background-size: cover;
+  
+  background-image: url(../pictures/wp7413225-tft-wallpapers\ \(1\).jpg);
+  max-width: 100%;
+  height: auto;
+  min-height: 10;
+}

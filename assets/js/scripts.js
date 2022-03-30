@@ -14,6 +14,7 @@ function getAPI(summonerName) {
           Id: '',
           Picture: '',
           Wins: '',
+          Points: '',
           Losses: '',
           Percent: '', 
           Tier:'',
@@ -35,9 +36,11 @@ function getWins(summoner) {
         summoner.Name = winData[0].summonerName.toUpperCase();
         summoner.Wins = winData[0].wins;
         summoner.Losses = winData[0].losses;
+        summoner.Points = winData[0].leaguePoints;
         summoner.Rank = winData[0].rank;
         summoner.Tier = winData[0].tier;
         buildSummoner(summoner);
+        console.log(winData)
       });
     }
   });
@@ -52,6 +55,7 @@ function buildSummoner(summoner) {
   let losses = document.createElement('p');
   let rank = document.createElement('p');
   let tier = document.createElement('p');
+  let points = document.createElement('p');
 
   let iconURL = `http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/${summoner.IconId}.png`;
   let icon = document.createElement('img');
@@ -63,11 +67,12 @@ function buildSummoner(summoner) {
   wins.innerHTML = "Wins: " + summoner.Wins
   losses.innerHTML = "Losses: " + summoner.Losses
   rank.innerHTML = "Rank: " + summoner.Rank
+  points.innerHTML = "League Points: " + summoner.Points
   tier.innerHTML = "Tier: " + summoner.Tier
 
   // append generated HTML to HTML container that exists as an HTML ID
   // the 'p' tags are being generated under the 'div'
-  div.append(wins, losses, rank, tier);
+  div.append(wins, losses, rank, points, tier);
 
   // send the above to display box
   displayBox.append(header, icon, div);
