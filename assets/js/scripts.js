@@ -20,13 +20,12 @@ function getAPI(summonerName) {
           Tier: "",
           Rank: "",
           // start winner stats
-          winValue:"",
+          winValue: "",
           rankValue: "",
           leaguePoints: "",
           tierValue: "",
-          totalPoints: "", 
-
-
+          totalPoints: "",
+          // end winner stats
         };
         summoner.IconId = apiData.profileIconId;
         summoner.Id = apiData.id;
@@ -48,26 +47,48 @@ function getWins(summoner) {
         summoner.Rank = winData[0].rank;
         summoner.Tier = winData[0].tier;
         summoner.winValue = winData[0].wins / winData[0].losses;
-        summoner.rankValue = 
-        summoner.leaguePoints = winData[0].leaguePoints / 100;
-        summoner.tierValue = {}
-          if (summoner.tier == "Challenger") {
-          } summoner.rankValue = 20
-          if (summoner.tier == "Diamond") {
-          } summoner.rankValue = 10
-          if (summoner.tier == "Platinum") {
-          } summoner.rankValue = 6
-          if (summoner.tier == "Gold") {
-          } summoner.rankValue = 4
-          if (summoner.tier == "Silver") {
-          } summoner.rankValue = 3
-          if (summoner.tier == "Bronze") {
-          } summoner.rankValue = 2
-          if (summoner.tier == "Tin") {
-          } summoner.rankValue = 1;
-       
-           summoner.totalPoints = winValue + rankValue + leaguePoints + tierValue;
 
+        if (summoner.Rank == "I") {
+          summoner.rankValue = 3;
+        }
+        if (summoner.Rank == "II") {
+          summoner.rankValue = 2;
+        }
+        if (summoner.Rank == "III") {
+          summoner.rankValue = 1.5;
+        }
+        if (summoner.Rank == "IV") {
+          summoner.rankValue = 1;
+        }
+        if (summoner.Rank == "V") {
+          summoner.rankValue = 0.5;
+        }
+
+        summoner.leaguePoints = winData[0].leaguePoints / 100;
+
+        if (summoner.Tier == "CHALLENGER") {
+          summoner.tierValue = 20;
+        }
+        if (summoner.Tier == "DIAMOND") {
+          summoner.tierValue = 10;
+        }
+        if (summoner.Tier == "PLATINUM") {
+          summoner.tierValue = 6;
+        }
+        if (summoner.Tier == "GOLD") {
+          summoner.tierValue = 4;
+        }
+        if (summoner.Tier == "SILVER") {
+          summoner.tierValue = 3;
+        }
+        if (summoner.Tier == "BRONZE") {
+          summoner.tierValue = 2;
+        }
+        if (summoner.Tier == "TIN") {
+          summoner.tierValue = 1;
+        }
+
+        summoner.totalPoints = summoner.leaguePoints + summoner.rankValue + summoner.tierValue + summoner.winValue;
         buildSummoner(summoner);
         console.log(summoner);
       });
@@ -106,7 +127,6 @@ function buildSummoner(summoner) {
   // send the above to display box
   displayBox.append(header, icon, div);
   displayResults.append(displayBox);
-  
 }
 
 function searchButton(event) {
@@ -138,7 +158,6 @@ function searchButton(event) {
 
 //   };
 // }
-
 
 function winnerMath(summoner) {
   (summoner) => {
