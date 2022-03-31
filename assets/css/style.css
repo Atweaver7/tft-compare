@@ -210,14 +210,3 @@ input:focus {
       font-size: 20px
   }
 }
-
-
-
-.hero-picture {
-  background-size: cover;
-  
-  background-image: url(../pictures/wp7413225-tft-wallpapers\ \(1\).jpg);
-  max-width: 100%;
-  height: auto;
-  min-height: 10;
-} 
