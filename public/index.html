@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <title>TFT Compare</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        @import url('http://fonts.cdnfonts.com/css/riot');
+    </style>
+
+</head>
+
+<body class="body">
+    <header>
+        <div class="header-flex-container">
+            <!-- <div> <img src="assets/pictures/logo2.png" alt="Tft compare logo"></div> -->
+            <div> <h1>TFT Compare</h1></div>
+            <a id="sign-in" href="./login.html">Sign In</a>
+        </div>
+    </header>
+
+    <div class="body-flex-container">
+    <!-- Top 5 display row -->
+    <div class="top-5-display-container">
+        <p> Top 5 players among all past searches: </p>
+        </div>
+
+    <!-- VS area -->   
+
+        <div class="search-form">
+            <!--Div for Centered Text & Input-->
+            <form>
+                <p class="enter-name-text"> Enter League of Legends Summoner Names</p>
+<!-- 
+                <p class = "instruction"> Your Summoner Name is what your friends will see in-game.</p> -->
+
+                <input class="input-box input-1 input-left" placeholder="Summoner ID"
+                        style="font-family:Arial, FontAwesome" type="text">
+                <p class="vs-text"> VS </p>
+                <input class="input-box input-2 input-right" placeholder="Summoner ID"
+                        style="font-family:Arial, FontAwesome" type="text">
+                <button type="click" class="btn search-btn btn-primary rounded">Let's Go</button>
+                </form>
+        </div>
+        <div class="row">
+            
+        </div>
+            <!--Div for bottom Icons-->
+            <footer>
+                <div class="social-btn"> <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a> <a href="#"
+                        title="Twitter"><i class="fa fa-twitter"></i></a>
+                </div>
+            </footer>   
+
+    </div>
+
+    <script src="./assets/js/scripts.js"></script>
+</body>
+
+</html>
