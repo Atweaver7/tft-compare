@@ -8,25 +8,7 @@ function getAPI(summonerName) {
   fetch(requestURL).then(function (response) {
     if (response.ok) {
       response.json().then(function (apiData) {
-        var summoner = {
-          Name: "",
-          IconId: "",
-          Id: "",
-          Picture: "",
-          Wins: "",
-          Points: "",
-          Losses: "",
-          Percent: "",
-          Tier: "",
-          Rank: "",
-          // start winner stats
-          winValue: "",
-          rankValue: "",
-          leaguePoints: "",
-          tierValue: "",
-          totalPoints: "",
-          // end winner stats
-        };
+        var summoner = {};
         summoner.IconId = apiData.profileIconId;
         summoner.Id = apiData.id;
         getWins(summoner);
