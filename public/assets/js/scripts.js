@@ -141,22 +141,4 @@ function searchButton(event) {
 //   };
 // }
 
-function winnerMath(summoner) {
-  (summoner) => {
-    if (summoner.tier === "Challenger") {
-    }
-    if (summoner.tier === "Platinum") {
-    }
-    if (summoner.tier === "Gold") {
-    }
-    if (summoner.tier === "Silver") {
-    }
-    if (summoner.tier === "Bronze") {
-    }
-    if (summoner.tier === "Tin") {
-    }
-  };
-  console.log(winnerMath);
-}
-
 document.addEventListener("click", searchButton);
