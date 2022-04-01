@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Atweaver7/tft-compare#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "dotenv": "^16.0.0",
     "env": "^0.0.2",
     "express": "^4.17.3",

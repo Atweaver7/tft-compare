@@ -4,79 +4,69 @@ var displayResults = document.querySelector(".row");
 
 // Api request
 function getAPI(summonerName) {
-  let requestURL = `https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/${summonerName}?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
-  fetch(requestURL).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (apiData) {
-        var summoner = {};
-        summoner.IconId = apiData.profileIconId;
-        summoner.Id = apiData.id;
-        getWins(summoner);
-      });
-    }
+  fetch('/api/summoner', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(
+      {
+        summonerName: summonerName
+      }
+    )
+  })
+  .then(res => res.json())
+  .then(summoner => {
+    calculateWins(summoner);
   });
-}
+};
 
-function getWins(summoner) {
-  let requestURL = `https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summoner.Id}?api_key=RGAPI-0561ded4-3020-4fec-a8c6-b33598f42810`;
-  fetch(requestURL).then(function (response) {
-    if (response.ok) {
-      response.json().then(function (winData) {
-        summoner.Name = winData[0].summonerName.toUpperCase();
-        summoner.Wins = winData[0].wins;
-        summoner.Losses = winData[0].losses;
-        summoner.Points = winData[0].leaguePoints;
-        summoner.Rank = winData[0].rank;
-        summoner.Tier = winData[0].tier;
-        summoner.winValue = winData[0].wins / winData[0].losses;
+function calculateWins(summoner) {
+  summoner.winValue = summoner.wins / summoner.losses;
 
-        if (summoner.Rank == "I") {
-          summoner.rankValue = 3;
-        }
-        if (summoner.Rank == "II") {
-          summoner.rankValue = 2;
-        }
-        if (summoner.Rank == "III") {
-          summoner.rankValue = 1.5;
-        }
-        if (summoner.Rank == "IV") {
-          summoner.rankValue = 1;
-        }
-        if (summoner.Rank == "V") {
-          summoner.rankValue = 0.5;
-        }
+  if (summoner.rank == "I") {
+    summoner.rankValue = 3;
+  }
+  if (summoner.rank == "II") {
+    summoner.rankValue = 2;
+  }
+  if (summoner.rank == "III") {
+    summoner.rankValue = 1.5;
+  }
+  if (summoner.rank == "IV") {
+    summoner.rankValue = 1;
+  }
+  if (summoner.rank == "V") {
+    summoner.rankValue = 0.5;
+  }
 
-        summoner.leaguePoints = winData[0].leaguePoints / 100;
+  summoner.leaguePointPercent = summoner.points / 100;
 
-        if (summoner.Tier == "CHALLENGER") {
-          summoner.tierValue = 20;
-        }
-        if (summoner.Tier == "DIAMOND") {
-          summoner.tierValue = 10;
-        }
-        if (summoner.Tier == "PLATINUM") {
-          summoner.tierValue = 6;
-        }
-        if (summoner.Tier == "GOLD") {
-          summoner.tierValue = 4;
-        }
-        if (summoner.Tier == "SILVER") {
-          summoner.tierValue = 3;
-        }
-        if (summoner.Tier == "BRONZE") {
-          summoner.tierValue = 2;
-        }
-        if (summoner.Tier == "TIN") {
-          summoner.tierValue = 1;
-        }
+  if (summoner.tier == "CHALLENGER") {
+    summoner.tierValue = 20;
+  }
+  if (summoner.tier == "DIAMOND") {
+    summoner.tierValue = 10;
+  }
+  if (summoner.tier == "PLATINUM") {
+    summoner.tierValue = 6;
+  }
+  if (summoner.tier == "GOLD") {
+    summoner.tierValue = 4;
+  }
+  if (summoner.tier == "SILVER") {
+    summoner.tierValue = 3;
+  }
+  if (summoner.tier == "BRONZE") {
+    summoner.tierValue = 2;
+  }
+  if (summoner.tier == "TIN") {
+    summoner.tierValue = 1;
+  }
 
-        summoner.totalPoints = summoner.leaguePoints + summoner.rankValue + summoner.tierValue + summoner.winValue;
-        buildSummoner(summoner);
-        console.log(summoner);
-      });
-    }
-  });
-}
+  summoner.totalPoints = summoner.leaguePointPercent + summoner.rankValue + summoner.tierValue + summoner.winValue;
+  buildSummoner(summoner);
+};
 
 // function to dynamically update HTML within boxes
 function buildSummoner(summoner) {
@@ -89,18 +79,18 @@ function buildSummoner(summoner) {
   let tier = document.createElement("p");
   let points = document.createElement("p");
 
-  let iconURL = `http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/${summoner.IconId}.png`;
+  let iconURL = `http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/${summoner.icon_id}.png`;
   let icon = document.createElement("img");
   icon.setAttribute("src", iconURL);
   icon.setAttribute("alt", "Profile Icon");
 
   // creating HTML and populating with object data
-  header.innerHTML = summoner.Name;
-  wins.innerHTML = "Wins: " + summoner.Wins;
-  losses.innerHTML = "Losses: " + summoner.Losses;
-  rank.innerHTML = "Rank: " + summoner.Rank;
-  points.innerHTML = "League Points: " + summoner.Points;
-  tier.innerHTML = "Tier: " + summoner.Tier;
+  header.innerHTML = summoner.name;
+  wins.innerHTML = "Wins: " + summoner.wins;
+  losses.innerHTML = "Losses: " + summoner.losses;
+  rank.innerHTML = "Rank: " + summoner.rank;
+  points.innerHTML = "League Points: " + summoner.points;
+  tier.innerHTML = "Tier: " + summoner.tier;
 
   // append generated HTML to HTML container that exists as an HTML ID
   // the 'p' tags are being generated under the 'div'
@@ -121,24 +111,5 @@ function searchButton(event) {
     getAPI(rightName);
   }
 }
-
-// Math functions to calculate winner
-
-// function winnerObject(summoner) {
-//   var winner = {
-//     Name: "",
-//     IconId: "",
-//     Id: "",
-//     Picture: "",
-//     Wins: "",
-//     Points: "",
-//     Losses: "",
-//     Percent: "",
-//     Tier: "",
-//     Rank: "",
-//     WinPercent: "",
-
-//   };
-// }
 
 document.addEventListener("click", searchButton);
