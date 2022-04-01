@@ -2,7 +2,7 @@
   "name": "tft-compare",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Atweaver7/tft-compare#readme",
   "dependencies": {
     "dotenv": "^16.0.0",
+    "env": "^0.0.2",
     "express": "^4.17.3",
     "handlebars": "^4.7.7",
     "mysql2": "^2.3.3",
