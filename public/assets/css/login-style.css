@@ -1,0 +1,14 @@
+*{
+  color: #d5d6e8;
+}
+body {
+  background-image: url("../pictures/loginbg.jpg");
+}
+
+header{
+  text-align: left;
+}
+.sign-in, .sign-up{
+  text-align: center;
+}
+
