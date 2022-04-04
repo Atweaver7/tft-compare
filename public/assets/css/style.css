@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url("../pictures/background.jpg");
+  background-image: url("../pictures/loginbg.jpg");
   background-size: cover;
   background-repeat:repeat;
 }
@@ -137,7 +137,7 @@ button {
   width: 40vh;
   border: white 2px solid;
   text-align: center;
-  background-color:rgba(208, 234, 247, 0.2);
+  background-color:rgba(208, 234, 247, 0.4);
   border-radius: 25px;
 }
 .display p{
