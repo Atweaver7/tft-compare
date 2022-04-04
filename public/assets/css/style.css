@@ -1,10 +1,10 @@
 * {
-  margin: 0%;
+  margin: 0;
   font-family: 'Gill Sans','Impact', 'Haettenschweiler', "Arial Narrow Bold", 'sans-serif';
   color: azure;
 }
 
-.body {
+body {
   background-image: url("../pictures/background.jpg");
   background-size: cover;
   background-repeat:repeat;
@@ -20,8 +20,6 @@
 }
 
 header {
-  /* background-image: linear-gradient(to right, #506478, 	#002a56); */
-  /* opacity: 75%; */
   height: 15vh;
   background-image: transparent;
   text-align: center;
@@ -43,33 +41,34 @@ header h1 {
 
 /* sign in button style starts */
 #sign-in{
+  border-radius: 15px;
   padding: 10px 15px;
-  font-weight: lighter;
+  color: #ffd700;
   font-size: 1.55vw;
+  font-weight: 200;
 }
 
 #sign-in:hover {
   background: #a2bbce;
   color: #024e76;
   border-radius: 15px;
-  text-shadow: none;
+  text-shadow:gray;
 }
 /* sign in button style ends */
 
 .top-display-container {
-  display:block;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-left:5vw;
+  border-radius: 15px;
   background-color: #a2bbce;
   opacity: 80%;
-  width:100%;
-  height: 5vw;
+  width:90%;
+  height: 8vw;
+  padding: 10px 20px;
 }
 
-
-/* .body-flex-container {
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-} */
 
 
 .top-display-container p{
@@ -77,11 +76,13 @@ header h1 {
   color: #000000;
 }
 
-/* .search-form {
-  width: 100%;
+/* .body-flex-container {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
 } */
 
-form {
+/* form {
   font-size: 36px;
   margin-top: 25vh;
   text-align: center;
@@ -89,7 +90,7 @@ form {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%)
-}
+} */
 
 .input-box {
   /* margin: 0 20%; */
@@ -107,6 +108,16 @@ input::-webkit-input-placeholder {
   color: white
 }
 
+input,
+input:focus {
+  border: solid 1px white;
+  outline: 0;
+  -webkit-appearance: none;
+  box-shadow: nones;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none
+}
+
 .vs-text {
   display: inline-block;
   text-align: center;
@@ -118,25 +129,12 @@ input::-webkit-input-placeholder {
 button {
   margin: 5%;
   position: fixed;
-  top: 45%;
+  top: 60%;
   left: 43%;
   width:10%;
   padding: 10px 15px;
   font-size: 25px;
 }
-
-
-/* .search-left-container {
-  margin-top: 200px;
-  text-align: center;
-  padding: 15px 15px 15px 15px;
-}
-
-.search-right-container {
-  margin-top: 200px;
-  text-align: center;
-  padding: 15px 15px 15px 15px;
-} */
 
 /* .display-box-1 {
     color: aliceblue;
@@ -149,8 +147,6 @@ button {
     text-align: center;
 }
 
-
-
 .social-btn {
   position: absolute;
   bottom: 20px;
@@ -162,15 +158,6 @@ i {
   color: white
 }
 
-input,
-input:focus {
-  border: solid 1px white;
-  outline: 0;
-  -webkit-appearance: none;
-  box-shadow: nones;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none
-}
 
 
 
