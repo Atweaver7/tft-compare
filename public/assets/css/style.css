@@ -62,14 +62,11 @@ header h1 {
   flex-wrap: wrap;
   margin-left:5vw;
   border-radius: 15px;
-  background-color: #a2bbce;
-  opacity: 80%;
+  background-color: rgb(162, 187, 206, 0.3);
   width:90%;
   height: 8vw;
   padding: 10px 20px;
 }
-
-
 
 .top-display-container p{
   font-size: 24px;
@@ -128,7 +125,7 @@ input:focus {
 
 button {
   margin: 5%;
-  position: fixed;
+  position: absolute;
   top: 60%;
   left: 43%;
   width:10%;
@@ -136,15 +133,15 @@ button {
   font-size: 25px;
 }
 
-/* .display-box-1 {
-    color: aliceblue;
-    border: white 2px solid;
-    text-align: center; */
+.display{
+  height: 60vh;
+  width: 40vh;
+  color: aliceblue;
+  border: white 2px solid;
+  text-align: center;
+  background-color:rgba(208, 234, 247, 0.3);
+  border-radius: 25px;
 
-.display-box-2 {
-    color: aliceblue;
-    border: white 2px solid;
-    text-align: center;
 }
 
 .social-btn {
