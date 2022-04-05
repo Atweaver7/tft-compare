@@ -5,11 +5,11 @@ router.get('/', (req, res) => {
     res.render('homepage')
 })
 
-router.get('/compare/:leftName/:rightName', async (req, res) => {
-    let summoners = [];
-    summoners += await Summoner.findOne({
+router.get('/compare', (req, res) => {
+    let summoners = {};
+    Summoner.findOne({
         where: {
-            name: JSON.stringify(req.params.leftName)
+            name: req.query.leftName
         },
         attributes: [
             'id',
@@ -22,24 +22,30 @@ router.get('/compare/:leftName/:rightName', async (req, res) => {
             'rank',
             'tier'
         ]
-    });
-    summoners += await Summoner.findOne({
-        where: {
-            name: JSON.stringify(req.params.rightName)
-        },
-        attributes: [
-            'id',
-            'name',
-            'riot_id',
-            'icon_id',
-            'wins',
-            'losses',
-            'points',
-            'rank',
-            'tier'
-        ]
-    })
-    res.render('displayResults', summoners);
+    }).then(leftData => {
+        summoners.left = leftData.get({ plain:true });
+        Summoner.findOne({
+            where: {
+                name: req.query.rightName
+            },
+            attributes: [
+                'id',
+                'name',
+                'riot_id',
+                'icon_id',
+                'wins',
+                'losses',
+                'points',
+                'rank',
+                'tier'
+            ]
+        }).then(rightData => {
+            summoners.right = rightData.get({ plain:true });
+            console.log(summoners);
+            // pass a single data object into the displayResults template
+            res.render('displayResults', { summoners });
+        });
+    });  
 });
 
 module.exports = router;

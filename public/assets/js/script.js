@@ -2,7 +2,7 @@ let leftSearch = document.querySelector(".input-left");
 let rightSearch = document.querySelector(".input-right");
 let formEl = document.querySelector("#form")
 
-function compareButtonHandler(event) {
+async function compareButtonHandler(event) {
   event.preventDefault();
 
   const leftName = leftSearch.value.trim();
@@ -24,14 +24,9 @@ function compareButtonHandler(event) {
         }),
         headers: { 'Content-Type': 'application/json' }
       });
-      const display = await fetch(
-        `/compare/${leftName}/${rightName}`,
-        {
-        method: 'get',
-        headers: { 'Content-Type': 'application/json' }
-      });
     }
-    responses();
+    await responses();
+    document.location.replace(`/compare?leftName=${leftName}&rightName=${rightName}`);
   } else {
     alert("Please enter names for both summoners.")
   }
