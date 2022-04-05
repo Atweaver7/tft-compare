@@ -5,6 +5,11 @@ router.get('/', (req, res) => {
     res.render('homepage')
 })
 
+router.get('/login', (req, res) => {
+    res.render('login');
+  });
+  
+
 router.get('/compare/:leftName/:rightName', async (req, res) => {
     let summoners = [];
     summoners += await Summoner.findOne({
