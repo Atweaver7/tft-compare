@@ -4,6 +4,9 @@ const { Summoner } = require('../models');
 router.get('/', (req, res) => {
     res.render('homepage')
 })
+router.get('/login', (req, res) => {
+    res.render('loginPage')
+})
 
 router.get('/compare', (req, res) => {
     let summoners = {};
@@ -20,7 +23,8 @@ router.get('/compare', (req, res) => {
             'losses',
             'points',
             'rank',
-            'tier'
+            'tier',
+            'total_points'
         ]
     }).then(leftData => {
         summoners.left = leftData.get({ plain:true });
@@ -37,7 +41,8 @@ router.get('/compare', (req, res) => {
                 'losses',
                 'points',
                 'rank',
-                'tier'
+                'tier',
+                'total_points'
             ]
         }).then(rightData => {
             summoners.right = rightData.get({ plain:true });

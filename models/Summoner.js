@@ -45,7 +45,13 @@ class Summoner extends Model {
           this.tier_value = 1;
         }
         this.total_points = this.league_point_percent + this.rank_value + this.tier_value + this.win_value;
+    return Summoner.update(
+      {total_point:this.total_points},
+      {where:{id:this.id}
+    
+    
     }
+    )}
 }
 
 Summoner.init(
@@ -86,8 +92,12 @@ Summoner.init(
         tier: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        total_points: {
+            type: DataTypes.FLOAT,
+            allowNull: true,
         }
-    },
+    }, 
     {
         sequelize,
         freezeTableName: true,
