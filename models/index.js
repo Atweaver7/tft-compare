@@ -1,3 +1,3 @@
 const Summoner = require("./Summoner");
-
-module.exports = { Summoner };
+const User = require("./User");
+module.exports = { Summoner, User};
