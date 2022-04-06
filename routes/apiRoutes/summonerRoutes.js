@@ -25,14 +25,11 @@ router.post('/', async (req, res) => {
         losses: winData.data[0].losses,
         points: winData.data[0].leaguePoints,
         rank: winData.data[0].rank,
-        tier: winData.data[0].tier,
-        // win_value: [.99]
-        
+        tier: winData.data[0].tier, 
     })
     .then(dbSummonerData => {
-       let summoner = dbSummonerData.calculateWins();
+        let summoner = dbSummonerData.calculateWins();
         res.json(summoner)
-        console.log(summoner)
     }) 
     .catch(err => {
         console.log(err);

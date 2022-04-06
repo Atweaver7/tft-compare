@@ -45,13 +45,19 @@ class Summoner extends Model {
           this.tier_value = 1;
         }
         this.total_points = this.league_point_percent + this.rank_value + this.tier_value + this.win_value;
-    return Summoner.update(
-      {total_point:this.total_points},
-      {where:{id:this.id}
-    
-    
-    }
-    )}
+        console.log(this.icon_id);
+        Summoner.update(
+            {  
+                total_points: this.total_points
+            },
+            {
+                where:{
+                    id:this.id
+                }
+            }
+        )
+        .then(updateObject => updateObject);
+    };
 }
 
 Summoner.init(

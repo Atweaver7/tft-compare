@@ -46,7 +46,11 @@ router.get('/compare', (req, res) => {
             ]
         }).then(rightData => {
             summoners.right = rightData.get({ plain:true });
-            console.log(summoners);
+            if (summoners.left.total_points > summoners.right.total_points) {
+                summoners.winner = summoners.left;
+            } else {
+                summoners.winner = summoners.right;
+            }
             // pass a single data object into the displayResults template
             res.render('displayResults', { summoners });
         });
