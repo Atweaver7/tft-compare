@@ -1,22 +1,13 @@
 * {
   margin: 0;
-  font-family: monospace;
+  font-family: 'Gill Sans','Impact', 'Haettenschweiler', "Arial Narrow Bold", 'sans-serif';
   color: azure;
 }
 
-
-.logo {
-  background-image: url("../pictures/logo2.png");
-  min-width: 125px;
-  min-height: 125px;
-  background-size: cover;
-
-
-}
 body {
-  background-image: url("../pictures/loginbg.jpg");
-
-  
+  background-image: url("../pictures/bg.jpg");
+  background-size: cover;
+  background-repeat:repeat;
 }
 
 .header-flex-container{
@@ -37,15 +28,15 @@ header {
   position: -webkit-sticky;
 }
 
-/* Logo */
-/* header img {
-  margin: 0px 100px;
-  width: 150px;
-  height: 150px;
-} */
-
 header h1 {
   font-size: 60px;
+}
+
+.logo {
+  background-image: url("../pictures/logo2.png");
+  min-width: 125px;
+  min-height: 125px;
+  background-size: cover;
 }
 
 /* sign in button style starts */
@@ -133,7 +124,7 @@ input:focus {
 
 button {
   margin: 5%;
- 
+  position: absolute;
   top: 55%;
   left: 45%;
   width:10%;
