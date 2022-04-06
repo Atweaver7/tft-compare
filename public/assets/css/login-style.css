@@ -5,20 +5,6 @@ body {
   background-image: url("../pictures/loginbg.jpg");
 }
 
-header{
-  text-align: left;
-}
-
-.header-flex-container{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.logo{
-margin-right: 10%;
-}
-
 .sign-in, .sign-up{
   text-align: center;
 }

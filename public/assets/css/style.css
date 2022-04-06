@@ -44,6 +44,7 @@ header h1 {
   color: #ffd700;
   font-size: 1.55vw;
   font-weight: 200;
+  height: 100px;
 }
 
 #sign-in:hover {
