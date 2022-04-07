@@ -1,4 +1,4 @@
-  #  TFT Compare![license logo](./assets/Vizore.png)
+  #  TFT Compare![license logo]
   
   ## Table of Contents
   1. [Installation](#installation)
