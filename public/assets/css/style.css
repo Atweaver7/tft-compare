@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  font-family: 'monochrome';
+  color: rgb(0, 255, 255);
+   
+}
+
+body {
+  background-image: url("../pictures/bg.jpg");
+ background-repeat: no-repeat;
+ background-size: cover;
+
+  
+}
+
+.header-flex-container{
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-top: 1vw;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+}
+
+header {
+  height: 15vh;
+  background-image: transparent;
+  text-align: center;
+  color: azure;
+  position: sticky;
+  position: -webkit-sticky;
+}
+
+header h1 {
+  font-size: 60px;
+}
+
+.logo {
+  width: 125px;
+  height: 125px;
+}
+
+/* sign in button style starts */
+#sign-in{
+  border-radius: 15px;
+  padding: 10px 15px;
+  color: #ffd700;
+  font-size: 1.55vw;
+  font-weight: 200;
+  height: 100px;
+}
+
+#sign-in:hover {
+  background: #a2bbce;
+  color: #024e76;
+  border-radius: 15px;
+  text-shadow:gray;
+}
+/* sign in button style ends */
+
+.top-display-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-left:5vw;
+  border-radius: 15px;
+  background-color: rgb(162, 187, 206, 0.2);
+  width:90%;
+  height: 8vw;
+  padding: 10px 20px;
+  margin-bottom:5%;
+}
+
+.top-display-container p{
+  font-size: 24px;
+  color: #000000;
+}
+
+/* .body-flex-container {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+
+/* form {
+  font-size: 36px;
+  margin-top: 25vh;
+  text-align: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+} */
+
+.input-box {
+  /* margin: 0 20%; */
+  /* display:block; */
+  border-radius: 25px;
+  border: solid 1px white;
+  background: transparent;
+  width: 40%;
+  padding: 10px 20px
+}
+
+input,
+input::-webkit-input-placeholder {
+  font-size: 15px;
+  color: white
+}
+
+input,
+input:focus {
+  border: solid 1px white;
+  outline: 0;
+  -webkit-appearance: none;
+  box-shadow: nones;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none
+}
+
+.vs-text {
+  text-align: center;
+  font-size: 36px;
+  color: azure;
+}
+
+button {
+  margin: 5%;
+  position: absolute;
+  top: 55%;
+  left: 45%;
+  width:10%;
+  padding: 10px 15px;
+  font-size: 25px;
+}
+
+.display{
+  height: auto;
+  width: 40vh;
+  border: white 2px solid;
+  text-align: center;
+  background-color:rgba(208, 234, 247, 0.4);
+  border-radius: 25px;
+}
+.display p{
+  color: #ffd700;
+  font-weight: light;
+  text-align: left;
+}
+
+.social-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 47%
+}
+
+i {
+  padding: 5px;
+  color: white
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .firstLine {
+      font-size: 20px
+  }
+}
+
+
+.footer {
+  background-color: #000000;
+}

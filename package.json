@@ -2,8 +2,9 @@
   "name": "tft-compare",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/Atweaver7/tft-compare/issues"
   },
-  "homepage": "https://github.com/Atweaver7/tft-compare#readme"
+  "homepage": "https://github.com/Atweaver7/tft-compare#readme",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "env": "^0.0.2",
+    "express": "^4.17.3",
+    "express-handlebars": "^6.0.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.17.0"
+  }
 }
