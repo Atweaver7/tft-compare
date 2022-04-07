@@ -1,4 +1,4 @@
-  #  TFT Compare![license logo]
+  #  TFT Compare!
   
   ## Table of Contents
   1. [Installation](#installation)
