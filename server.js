@@ -4,7 +4,7 @@ const routes = require('./routes');
 // import sequelize connection
 
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT 
 
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({

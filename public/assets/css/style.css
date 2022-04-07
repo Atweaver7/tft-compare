@@ -1,13 +1,16 @@
 * {
   margin: 0;
-  font-family: 'Gill Sans','Impact', 'Haettenschweiler', "Arial Narrow Bold", 'sans-serif';
-  color: azure;
+  font-family: 'monochrome';
+  color: rgb(0, 255, 255);
+   
 }
 
 body {
   background-image: url("../pictures/bg.jpg");
-  background-size: cover;
-  background-repeat:repeat;
+ background-repeat: no-repeat;
+ background-size: cover;
+
+  
 }
 
 .header-flex-container{
@@ -163,4 +166,9 @@ i {
   .firstLine {
       font-size: 20px
   }
+}
+
+
+.footer {
+  background-color: #000000;
 }
