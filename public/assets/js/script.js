@@ -33,9 +33,3 @@ async function compareButtonHandler(event) {
 }
 
 formEl.addEventListener("submit", compareButtonHandler);
-
-
-// let iconURL = `http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/${summoner.icon_id}.png`;
-//   let icon = document.createElement("img");
-//   icon.setAttribute("src", iconURL);
-//   icon.setAttribute("alt", "Profile Icon");

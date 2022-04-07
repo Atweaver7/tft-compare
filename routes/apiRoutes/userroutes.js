@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { User } = require("../../models");
-const { get } = require('./summonerRoutes');
 
 router.post('/signup', (req, res) => {
     // Access our User model and run .findAll() method)
@@ -13,17 +12,19 @@ router.post('/signup', (req, res) => {
         res.status(500).json(err);
     });
 });
+
 router.post('/login', (req,res) => {
     User.findOne({
         where: {
             email: req.body.email,
-        }
-        
+        }   
     }).then((dbUserData)=>{
-        if (dbUserData)
-      {  res.status(200).json(dbUserData)
-        
+        if (dbUserData) {
+            res.status(200).json(dbUserData)
+        } else {
+            res.status(400).json({Message: "No User Found"})
+        }
+    }); 
+});
 
-        } else {res.status(400).json({Message: "No User Found"})}
-    }) 
-}
+module.exports = router;
