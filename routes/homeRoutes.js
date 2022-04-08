@@ -54,7 +54,11 @@ router.get('/compare', (req, res) => {
             // pass a single data object into the displayResults template
             res.render('displayResults', { summoners });
         });
-    });  
-});
+    })
+    .catch(err => {
+        console.log(err)
+    });;  
+})
+
 
 module.exports = router;

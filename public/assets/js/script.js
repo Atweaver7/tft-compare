@@ -16,13 +16,17 @@ async function compareButtonHandler(event) {
           summonerName: leftName
         }),
         headers: { 'Content-Type': 'application/json' }
-      });
+      }).catch(error => {
+        window.alert("Please enter valid name(leftname)")
+      })
       const responseRight = await fetch('/api/summoner', {
         method: 'post',
         body: JSON.stringify({
           summonerName: rightName
         }),
         headers: { 'Content-Type': 'application/json' }
+      }).catch(error => {
+        window.alert("Please enter valid name(rightname)")
       });
     }
     await responses();
