@@ -2,11 +2,15 @@ const router = require('express').Router();
 const { Summoner } = require('../models');
 
 router.get('/', (req, res) => {
-    res.render('homepage')
+    res.render('homepage', { loggedIn: req.session.loggedIn} )
 })
 router.get('/login', (req, res) => {
-    res.render('loginPage')
-})
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        return;
+    }
+    res.render('loginPage');
+});
 
 router.get('/compare', (req, res) => {
     let summoners = {};
@@ -19,6 +23,7 @@ router.get('/compare', (req, res) => {
             'name',
             'riot_id',
             'icon_id',
+            'icon_url',
             'wins',
             'losses',
             'points',
@@ -37,6 +42,7 @@ router.get('/compare', (req, res) => {
                 'name',
                 'riot_id',
                 'icon_id',
+                'icon_url',
                 'wins',
                 'losses',
                 'points',
@@ -52,13 +58,13 @@ router.get('/compare', (req, res) => {
                 summoners.winner = summoners.right;
             }
             // pass a single data object into the displayResults template
-            res.render('displayResults', { summoners });
+            res.render('displayResults', { summoners, loggedIn: req.session.loggedIn });
         });
     })
     .catch(err => {
         console.log(err)
     });;  
-})
+});
 
 
 module.exports = router;

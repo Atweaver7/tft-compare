@@ -4,7 +4,11 @@
             <!-- <div> <img src="assets/pictures/logo2.png" alt="Tft compare logo"></div> -->
             <img class="logo" src="assets/pictures/logo.png">
             <h1>TFT Compare</h1>
+            {{#if loggedIn}}
+            <button id="logout" class="btn-no-style">Logout</button>
+            {{else}}
             <a id="sign-in" href="/login">Sign In</a>
+            {{/if}}
         </div>
     </header>
     <main>
@@ -75,8 +79,8 @@
                 
                 <div class="row">
                     <div class="text-center winner-div">
-                    <p>Winner... {{ summoners.winner.name }}!</p>
-                    <img alt="winner icon" src='http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/0.png'>
+                        <p>Winner... {{summoners.winner.name}}!</p>
+                        <img alt="winner icon" src={{summoners.winner.icon_url}}>
                     </div>
                 </div>
             </div>
