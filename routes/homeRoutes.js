@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Summoner } = require('../models');
+const { Summoner} = require('../models');
 
 router.get('/', (req, res) => {
     res.render('homepage', { loggedIn: req.session.loggedIn} )

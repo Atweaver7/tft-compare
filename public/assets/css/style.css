@@ -1,7 +1,8 @@
 * {
   margin: 0;
   font-family: 'monochrome';
-  color: rgb(0, 255, 255);
+  font-weight: 300;
+  color: rgb(0, 255, 255, 0.8);
    
 }
 
