@@ -5,7 +5,7 @@
             <img class="logo" src="assets/pictures/logo.png">
             <h1>TFT Compare</h1>
             {{#if loggedIn}}
-            <button id="logout" class="btn-no-style">Logout</button>
+            <button type="click" onclick='logout(event)'>Logout</button>
             {{else}}
             <a id="sign-in" href="/login">Sign In</a>
             {{/if}}

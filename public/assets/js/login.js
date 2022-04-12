@@ -5,7 +5,26 @@ const signUpPasswordInput = document.querySelector('.sign-up-password');
 
 async function signIn(event){
     event.preventDefault();
-    // session logic
+
+    const email = signInEmailInput.value.trim();
+    const password = signInPasswordInput.value.trim();
+    
+    if (email && password) {
+        const response = await fetch('/api/user/login', {
+            method: 'post',
+            body: JSON.stringify({
+            email,
+            password
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        });
+    
+        if (response.ok) {
+            document.location.replace('/');
+        } else {
+            alert(response.statusText);
+        }
+    }
 }
 
 async function signUp(event){
@@ -15,7 +34,7 @@ async function signUp(event){
     const password = signUpPasswordInput.value.trim();
   
     if (email && password) {
-        const response = await fetch('/api/users', {
+        const response = await fetch('/api/user', {
             method: 'post',
             body: JSON.stringify({
                 email,
