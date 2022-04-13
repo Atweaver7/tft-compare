@@ -79,6 +79,10 @@ Summoner.init(
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        icon_url: {
+          type: DataTypes.STRING,
+          allowNull: false
+        },
         wins: {
             type: DataTypes.INTEGER,
             allowNull: false,

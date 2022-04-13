@@ -16,24 +16,25 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
     let summoner = await axios(
-        `https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/${req.body.summonerName}?api_key=${apiKey}`
+      `https://na1.api.riotgames.com/tft/summoner/v1/summoners/by-name/${req.body.summonerName}?api_key=${apiKey}`
     )
     .catch(function (error) {
-        if (error == 404) {
-            console.alert("Please enter valid name");
-        } 
+      if (error == 404) {
+        console.alert("Please enter valid name");
+      } 
     });
     let winData = await axios(
-        `https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summoner.data.id}?api_key=${apiKey}`
+      `https://na1.api.riotgames.com/tft/league/v1/entries/by-summoner/${summoner.data.id}?api_key=${apiKey}`
     )
     .catch(err => {
-        console.log(err)
+      console.log(err)
     });
     
     Summoner.create({
       name: summoner.data.name,
       riot_id: summoner.data.id,
       icon_id: summoner.data.profileIconId,
+      icon_url: `http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/${summoner.data.profileIconId}.png`,
       wins: winData.data[0].wins,
       losses: winData.data[0].losses,
       points: winData.data[0].leaguePoints,
