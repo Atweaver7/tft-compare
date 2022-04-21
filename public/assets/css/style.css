@@ -42,7 +42,7 @@ header h1 {
 }
 
 /* sign in button style starts */
-#sign-in{
+.top-btn{
   border-radius: 15px;
   padding: 10px 15px;
   color: #ffd700;
